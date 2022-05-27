@@ -48,6 +48,9 @@ function findPosition(myLink, state,dim){
 
     var spriteX = sprite.x;
     var spriteY = sprite.y;
+    if(shouldFire(myLink,state)){
+      return 'T';
+    }
 
     if(spriteX > centerX){
       if((Math.floor((Math.random()*spriteX)))%2==0){
@@ -56,9 +59,6 @@ function findPosition(myLink, state,dim){
         return 'F';
       }
     }else{
-      if(shouldFire(myLink,state)){
-        return 'T';
-      }
       const moves = ['F', 'T', 'L', 'R'];
       return (moves[Math.floor(Math.random() * moves.length)]);
     }
