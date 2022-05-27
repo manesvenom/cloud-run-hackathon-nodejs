@@ -13,10 +13,10 @@ app.post('/', function (req, res) {
 
   data = req.body;
   var dim = data.arena.dims; 
-  console.log(dim[0]);
-  console.log(dim[1]);
+ // console.log(dim[0]);
+ // console.log(dim[1]);
   var state = data.arena.state;
-  console.log(data.arena.state);
+//  console.log(data.arena.state);
 
   let nextPosition = findPosition(data._links.self.href,state,dim);
   console.log(nextPosition);
@@ -37,7 +37,11 @@ function findPosition(myLink, state,dim){
     var spriteY = sprite.y;
 
     if(spriteX > centerX){
-      return 'F';
+      if((spriteX+1)>dim[0]){
+        return 'R';
+      }else{
+        return 'F';
+      }
     }else{
       const moves = [ 'T', 'L', 'R'];
       return (moves[Math.floor(Math.random() * moves.length)]);
