@@ -31,7 +31,10 @@ function shouldFire(myLink, state){
      for (var key in state) {
         let obj = state[key];
         if(obj.x == sprite.x){
-          return true;
+            if((obj.y - sprite.y) < 4){
+              return true;
+            }
+         
         }
   }
 
