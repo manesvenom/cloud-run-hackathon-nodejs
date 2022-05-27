@@ -25,6 +25,19 @@ app.post('/', function (req, res) {
 
 });
 
+function shouldFire(myLink, state){
+     let sprite = state[myLink];
+
+     for (var key in state) {
+        let obj = state[key];
+        if(obj.x == sprite.x){
+          return true;
+        }
+  }
+
+      return false;
+}
+
 function findPosition(myLink, state,dim){
   
   let keys =  Object.keys(state);
@@ -43,6 +56,9 @@ function findPosition(myLink, state,dim){
         return 'F';
       }
     }else{
+      if(shouldFire(myLink,state)){
+        return 'T';
+      }
       const moves = ['F', 'T', 'L', 'R'];
       return (moves[Math.floor(Math.random() * moves.length)]);
     }
