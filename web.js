@@ -37,7 +37,7 @@ function findPosition(myLink, state,dim){
     var spriteY = sprite.y;
 
     if(spriteX > centerX){
-      if((spriteX+1)>dim[0]){
+      if((spriteX+1)%dim[0]==0){
         return 'R';
       }else{
         return 'F';
