@@ -43,7 +43,7 @@ function findPosition(myLink, state,dim){
         return 'F';
       }
     }else{
-      const moves = [ 'T', 'L', 'R'];
+      const moves = ['F', 'T', 'L', 'R'];
       return (moves[Math.floor(Math.random() * moves.length)]);
     }
 
