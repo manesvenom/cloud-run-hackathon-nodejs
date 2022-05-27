@@ -38,6 +38,15 @@ function shouldFire(myLink, state){
       return false;
 }
 
+function shouldRunAway(myLink, state){
+  let sprite = state[myLink];
+  if(sprite.wasHit){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 function findPosition(myLink, state,dim){
   
   let keys =  Object.keys(state);
@@ -48,9 +57,12 @@ function findPosition(myLink, state,dim){
 
     var spriteX = sprite.x;
     var spriteY = sprite.y;
-    if(shouldFire(myLink,state)){
-      return 'T';
+    if(!shouldRunAway(myLink,state)){
+      if(shouldFire(myLink,state)){
+        return 'T';
+      }
     }
+   
 
     if(spriteX > centerX){
       if((Math.floor((Math.random()*spriteX)))%2==0){
